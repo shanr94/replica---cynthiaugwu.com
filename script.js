@@ -229,7 +229,38 @@ document
     });
   });
 
-document.querySelector("#menu").addEventListener("click", () => {
-  document.querySelector("#menuLogo").style.display = "none";
-  document.querySelector("#menuList").style.display = "inline-block";
+document.querySelector("#menuLogo").addEventListener("click", () => {
+  if (window.innerWidth < 600) {
+    document.querySelector("#menuSection").style.display = "none";
+    document.querySelector("#closeMenu").style.display = "flex";
+    document.querySelector("nav").setAttribute("id", "fullPage");
+    document.querySelector("#menuPage").style.display = "flex";
+    document.querySelector("#landingPage").style.height = "100%";
+  } else {
+    document.querySelector("#menuList").style.display = "inline-block";
+  }
 });
+
+document.querySelector("#closeMenu").addEventListener("click", () => {
+  document.querySelector("#menuSection").style.display = "flex";
+  document.querySelector("#closeMenu").style.display = "none";
+  document.querySelector("nav").removeAttribute("id", "fullPage");
+  document.querySelector("#menuPage").style.display = "none";
+  document.querySelector("#landingPage").style.height = "100vh";
+  // } else {
+  //   document.querySelector("#menuList").style.display = "inline-block";
+  // }
+});
+
+setInterval(() => {
+  let timeElem = document.querySelectorAll(".time");
+  let dt = new Date();
+  let currTime = dt.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  timeElem.forEach((elem) => {
+    elem.innerText = currTime;
+    console.log(timeElem);
+  });
+}, 1000);

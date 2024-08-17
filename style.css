@@ -77,7 +77,14 @@ nav {
   padding: 4vh 3vw;
   display: flex;
   align-items: center;
+  flex-direction: column;
+}
+#topNav {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2vh;
 }
 nav #logo {
   font-size: 1.2rem;
@@ -97,12 +104,11 @@ nav #menuSection {
   flex-direction: column;
   overflow: hidden;
 }
-#menuLogo #menu {
+#topNav a {
   text-decoration: none;
   color: whitesmoke;
   font-size: 1rem;
   font-weight: 900;
-  text-transform: uppercase;
   cursor: pointer;
 }
 #menuLogo #menu span {
@@ -112,22 +118,73 @@ nav #menuSection {
 #menuSection #menuList {
   display: none;
 }
-#menuList ul {
+nav ul {
   list-style: none;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
-#menuList ul li {
-  margin-left: 40px;
-}
-#menuList ul li a {
+nav ul li a {
   text-decoration: none;
   color: whitesmoke;
   text-transform: uppercase;
   font-size: 1.05rem;
   font-weight: 900;
+}
+#menuList ul {
+  flex-direction: row;
+}
+#menuList ul li {
+  margin-left: 40px;
+}
+#closeMenu {
+  display: none;
+}
+#menuPage {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 9vh;
+}
+#menuPage ul {
+  align-items: flex-start;
+}
+#menuPage ul li {
+  padding: 0.6vh 0;
+}
+#menuPage ul li a {
+  font-size: 5vh;
+  color: black !important;
+}
+#fullPage {
+  height: 100vh;
+  background-color: #a2a1a1;
+  position: relative;
+}
+#navPageFooter {
+  width: 100%;
+  position: absolute;
+  bottom: 0.1vh;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4vh 3vw;
+  color: black;
+  border-top: 1px solid white;
+}
+#navPageFooter p {
+  font-size: 1.8vh;
+  font-weight: 900;
+}
+#fullPage a {
+  color: black !important;
+}
+#fullPage #topNav {
+  border-bottom: 0.1px solid white;
 }
 #heading {
   width: fit-content;
@@ -142,7 +199,7 @@ nav #menuSection {
   line-height: 0.9;
 }
 #heading h4 {
-  font-size: 0.85vw;
+  font-size: 0.95vw;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 3;
@@ -152,9 +209,9 @@ nav #menuSection {
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  left: 200px;
+  left: 10vw;
 }
-#textRight h5 {
+#textRight h4 {
   font-size: 0.9vw;
   font-weight: 900;
   text-transform: uppercase;
@@ -172,6 +229,7 @@ nav #menuSection {
 #rightHeading h4 {
   text-transform: uppercase;
   line-height: 2;
+  font-size: 1vw;
 }
 
 #lanPGFooter {
@@ -265,7 +323,7 @@ nav #menuSection {
   transition: all ease-in-out 0.5s;
 }
 .elem h5 {
-  font-size: 0.8vw;
+  font-size: 1vw;
   font-weight: bold;
 }
 .lastElem {
@@ -275,27 +333,28 @@ nav #menuSection {
   display: flex;
   align-items: center;
   flex-direction: row;
+  justify-content: flex-end;
   color: whitesmoke;
-  margin-top: 30vh;
-  gap: 90px;
+  margin-top: 45vh;
+  gap: 5vh;
   padding: 3vh 3vw;
-  padding-left: 45vw;
+  margin-right: 15vh;
 }
 #about img {
-  height: 250px;
-  width: 250px;
+  height: 20rem;
+  width: 20rem;
 }
 
 #aboutText {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 50vh;
   text-wrap: wrap;
 }
 #aboutText h5 {
   opacity: 0.7;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 #aboutText p {
@@ -316,16 +375,15 @@ nav #menuSection {
   color: black;
 }
 #subscribe {
-  margin-top: 15vh;
+  margin-top: 25vh;
   display: flex;
   flex-direction: column;
   width: fit-content;
   padding-left: 3vw;
 }
-#subscribe h5 {
+#subscribe .textOpacity {
   opacity: 0.7;
 }
-#subscribe h4,
 #subscribe h5 {
   text-transform: uppercase;
   color: whitesmoke;
@@ -342,7 +400,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15vh;
+  margin-top: 20vh;
 }
 
 footer #leftFooter {
@@ -351,7 +409,7 @@ footer #leftFooter {
 }
 footer #rightFooter {
   display: flex;
-  gap: 4rem;
+  gap: 5vh;
 }
 #rightFooter a {
   text-transform: uppercase;
@@ -364,4 +422,120 @@ footer #rightFooter {
   background-color: white;
   height: 1px;
   transform: translateX(-101%);
+}
+
+@media screen and (min-width: 600px) and (max-width: 882px) {
+  #heading h1 {
+    font-size: 12vh;
+  }
+  #heading h4 {
+    font-size: 1.5vh;
+  }
+  #rightHeading h4 {
+    font-size: 1.2vh;
+  }
+  #lanPGFooter a {
+    font-size: 1.5vh;
+  }
+  #secondPage h1 {
+    font-size: 9vh;
+  }
+  #secondPage h5 {
+    font-size: 1.3vh;
+  }
+  #about {
+    margin-right: 10vh;
+    margin-top: 20vh;
+  }
+  #about img {
+    height: 20vh;
+    width: 20vh;
+  }
+  #aboutText {
+    width: fit-content;
+  }
+  #aboutText p {
+    font-size: 1.4vh;
+  }
+  #subscribe h5 {
+    font-size: 1.2vh;
+  }
+  #leftFooter p {
+    font-size: 1.25vh;
+  }
+  #rightFooter a {
+    font-size: 1.25vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    padding-top: 2vh;
+  }
+  #menuLogo #heading h1 {
+    font-size: 8vh;
+  }
+  #heading h4 {
+    font-size: 1vh;
+  }
+  #rightHeading h4 {
+    font-size: 1vh;
+  }
+  #lanPGFooter a {
+    font-size: 1.2vh;
+  }
+  #iconContainer {
+    display: none;
+  }
+  #secondPage {
+    height: 100%;
+  }
+  .elem {
+    padding: 2vh 0;
+  }
+  #secondPage h1 {
+    font-size: 5vh;
+  }
+  #secondPage h5 {
+    font-size: 1.1vh;
+  }
+  #about {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 0;
+    margin-top: 12vh;
+  }
+  #about img {
+    height: 25vh;
+    width: 25vh;
+  }
+  #aboutText {
+    width: fit-content;
+    text-wrap: wrap;
+    padding-right: 3vh;
+  }
+  #aboutText p {
+    font-size: 1.5vh;
+  }
+  #subscribe {
+    margin-top: 7vh;
+  }
+  #subscribe h5 {
+    font-size: 1.2vh;
+  }
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1vh;
+    margin-top: 10vh;
+  }
+  #leftFooter p {
+    font-size: 1.15vh;
+  }
+  #rightFooter {
+    align-self: flex-end;
+  }
+  #rightFooter a {
+    font-size: 1.2vh;
+  }
 }
