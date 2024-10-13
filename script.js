@@ -190,12 +190,6 @@ function imageMouseFollower() {
   });
 }
 
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 600) {
-    imageMouseFollower();
-  }
-});
-
 document
   .querySelectorAll("#menuLogo, .lanPG-elem, .container")
   .forEach((elem) => {
@@ -279,3 +273,18 @@ setInterval(() => {
     elem.innerText = currTime;
   });
 }, 1000);
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 600) {
+    imageMouseFollower();
+    document.querySelector("#menu").style.display = "flex";
+    document.querySelector("#menuList").style.display = "none";
+  } else {
+    document.querySelector("#menuSection").style.display = "flex";
+    document.querySelector("#menuLogo").style.display = "flex";
+    document.querySelector("#closeMenu").style.display = "none";
+    document.querySelector("nav").removeAttribute("id", "fullPage");
+    document.querySelector("#menuPage").style.display = "none";
+    document.querySelector("#landingPage").style.height = "100vh";
+  }
+});
