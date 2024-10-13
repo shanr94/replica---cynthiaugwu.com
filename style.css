@@ -14,8 +14,8 @@ body {
   background-color: black;
 }
 #minicircle {
-  width: 12px;
-  height: 12px;
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
   background-color: white;
   z-index: 999999;
@@ -50,7 +50,7 @@ body {
   display: flex;
   align-items: center;
   width: fit-content;
-  gap: 10px;
+  gap: 1rem;
 }
 #content h4 {
   font-size: 1rem;
@@ -74,7 +74,7 @@ body {
 }
 nav {
   width: 100%;
-  padding: 4vh 3vw;
+  padding: 2rem 3rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -84,39 +84,35 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 2vh;
 }
-nav #logo {
-  font-size: 1.2rem;
-  font-weight: 900;
+#topNav a {
   text-decoration: none;
   color: whitesmoke;
-  padding: 5px;
+  font-weight: 900;
+  cursor: pointer;
+}
+nav #logo {
+  font-size: 1.1rem;
 }
 nav #menuSection {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 #menuLogo {
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-#topNav a {
-  text-decoration: none;
-  color: whitesmoke;
+#menuLogo #menu {
   font-size: 1rem;
-  font-weight: 900;
-  cursor: pointer;
 }
 #menuLogo #menu span {
   opacity: 0.6;
-  cursor: pointer;
 }
 #menuSection #menuList {
   display: none;
+  overflow: hidden;
 }
 nav ul {
   list-style: none;
@@ -136,7 +132,7 @@ nav ul li a {
   flex-direction: row;
 }
 #menuList ul li {
-  margin-left: 40px;
+  margin-left: 4rem;
 }
 #closeMenu {
   display: none;
@@ -469,29 +465,47 @@ footer #rightFooter {
 }
 
 @media screen and (max-width: 600px) {
+  #minicircle {
+    display: none;
+  }
   nav {
     padding-top: 2vh;
   }
   #menuLogo #heading h1 {
     font-size: 8vh;
   }
+  #heading {
+    margin-top: 25vh;
+    padding: 0 3rem;
+  }
   #heading h4 {
-    font-size: 1vh;
+    font-size: 1.3vh;
+  }
+  #rightHeading {
+    margin-top: 5vh;
+    padding: 0 3rem;
   }
   #rightHeading h4 {
-    font-size: 1vh;
+    font-size: 1.05vh;
+  }
+  #lanPGFooter {
+    padding: 2rem 3rem;
   }
   #lanPGFooter a {
-    font-size: 1.2vh;
+    font-size: 1.1vh;
   }
   #iconContainer {
     display: none;
   }
   #secondPage {
     height: 100%;
+    padding: 2rem 3rem;
   }
   .elem {
     padding: 2vh 0;
+  }
+  .elem img {
+    display: none;
   }
   #secondPage h1 {
     font-size: 5vh;
@@ -504,6 +518,7 @@ footer #rightFooter {
     align-items: flex-start;
     margin-right: 0;
     margin-top: 12vh;
+    padding: 2rem 3rem;
   }
   #about img {
     height: 25vh;
@@ -519,21 +534,26 @@ footer #rightFooter {
   }
   #subscribe {
     margin-top: 7vh;
+    padding: 2rem 3rem;
   }
   #subscribe h5 {
     font-size: 1.2vh;
   }
   footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1vh;
+    justify-content: space-between;
     margin-top: 10vh;
+    padding: 0 3rem;
+  }
+
+  footer #leftFooter {
+    gap: 5px;
   }
   #leftFooter p {
-    font-size: 1.15vh;
+    font-size: 1.2vh;
   }
-  #rightFooter {
-    align-self: flex-end;
+  footer #rightFooter {
+    display: flex;
+    gap: 10px;
   }
   #rightFooter a {
     font-size: 1.2vh;

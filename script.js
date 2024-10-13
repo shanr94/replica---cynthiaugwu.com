@@ -35,21 +35,21 @@ const animateLandingPage = () => {
     y: "10",
     opacity: 0,
     ease: Expo.easeInOut,
-    duration: 1,
+    duration: 0.5,
     delay: 1.1,
   })
     .to(".boundingElemUP", {
       y: "0%",
-      duration: 1,
+      duration: 0.5,
       ease: Power1,
       stagger: 0.2,
     })
     .from(".boundingElemDOWN", {
       y: "-100%",
-      duration: 1,
+      duration: 0.5,
       ease: Power1,
       stagger: 0.2,
-      delay: -0.4,
+      delay: -0.1,
     })
     .to("#lanPGFooter", {
       opacity: 1,
@@ -153,36 +153,47 @@ document.querySelectorAll(".icon").forEach((icon) => {
     minicircle.style.opacity = 1;
     i.style.transform = `translateY(0%)`;
   });
+  icon.addEventListener("click", () => {});
 });
 
-document.querySelectorAll(".elem").forEach((elem) => {
-  let rotate = 0;
-  let diffRotate = 0;
-  elem.addEventListener("mousemove", (evt) => {
-    let diff = evt.clientY - elem.getBoundingClientRect().top;
-    diffRotate = evt.clientX - rotate;
-    rotate = evt.clientX;
-    elem.querySelector("h1").style.paddingLeft = "40px";
-    elem.querySelector("h1").style.opacity = "0.2";
-    gsap.to(elem.querySelector("img"), {
-      opacity: 1,
-      ease: Power3,
-      top: diff,
-      left: evt.clientX,
-      rotate: gsap.utils.clamp(-20, 20, diffRotate * 0.5),
+function imageMouseFollower() {
+  document.querySelectorAll(".elem").forEach((elem) => {
+    let rotate = 0;
+    let diffRotate = 0;
+    elem.addEventListener("mousemove", (evt) => {
+      let diff = evt.clientY - elem.getBoundingClientRect().top;
+      diffRotate = evt.clientX - rotate;
+      rotate = evt.clientX;
+      if (window.innerWidth > 600) {
+        elem.querySelector("h1").style.paddingLeft = "40px";
+      }
+      elem.querySelector("h1").style.opacity = "0.2";
+      gsap.to(elem.querySelector("img"), {
+        opacity: 1,
+        ease: Power3,
+        top: diff,
+        left: evt.clientX,
+        rotate: gsap.utils.clamp(-20, 20, diffRotate * 0.5),
+      });
+    });
+
+    elem.addEventListener("mouseleave", (evt) => {
+      elem.querySelector("h1").style.paddingLeft = "0px";
+      elem.querySelector("h1").style.opacity = "0.7";
+
+      gsap.to(elem.querySelector("img"), {
+        opacity: 0,
+        ease: Power3,
+        duration: 0.5,
+      });
     });
   });
+}
 
-  elem.addEventListener("mouseleave", (evt) => {
-    elem.querySelector("h1").style.paddingLeft = "0px";
-    elem.querySelector("h1").style.opacity = "0.7";
-
-    gsap.to(elem.querySelector("img"), {
-      opacity: 0,
-      ease: Power3,
-      duration: 0.5,
-    });
-  });
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 600) {
+    imageMouseFollower();
+  }
 });
 
 document
@@ -238,18 +249,23 @@ document.querySelector("#menuLogo").addEventListener("click", () => {
     document.querySelector("#landingPage").style.height = "100%";
   } else {
     document.querySelector("#menuList").style.display = "inline-block";
+    gsap.from(document.querySelectorAll("#menuList li"), {
+      y: "-100%",
+      ease: Power1,
+      stagger: 0.1,
+      duration: 0.5,
+    });
+    document.querySelector("#menu").style.display = "none";
   }
 });
 
 document.querySelector("#closeMenu").addEventListener("click", () => {
   document.querySelector("#menuSection").style.display = "flex";
+  document.querySelector("#menu").style.display = "initial";
   document.querySelector("#closeMenu").style.display = "none";
   document.querySelector("nav").removeAttribute("id", "fullPage");
   document.querySelector("#menuPage").style.display = "none";
   document.querySelector("#landingPage").style.height = "100vh";
-  // } else {
-  //   document.querySelector("#menuList").style.display = "inline-block";
-  // }
 });
 
 setInterval(() => {
@@ -261,6 +277,5 @@ setInterval(() => {
   });
   timeElem.forEach((elem) => {
     elem.innerText = currTime;
-    console.log(timeElem);
   });
 }, 1000);
